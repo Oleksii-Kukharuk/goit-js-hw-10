@@ -12,15 +12,18 @@ const listCountryRef = document.querySelector('.country-list');
 inputRef.addEventListener('input', inputHandler);
 
 function inputHandler(e) {
-  console.log(e.currentTarget.value);
   let country = e.target.value.trim().toLowerCase();
   if (!country) {
   }
-  console.log();
+
   fetchCountries(country)
     .then(data => {
       listCountryRef.innerHTML = '';
       countryInfoRef.innerHTML = '';
+
+      if (data.length < 1) {
+        return;
+      }
       if (data.length > 10) {
         Notify.info('to many results, plaese input more data');
       }
@@ -38,5 +41,6 @@ function inputHandler(e) {
       listCountryRef.innerHTML = '';
       countryInfoRef.innerHTML = '';
       Notify.failure('НЕМА ТАКОЇ КРАЇНИ');
+      console.log(error.message);
     });
 }
