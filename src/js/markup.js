@@ -6,3 +6,7 @@ export function createMurkup({ name, capital, population, flags, languages }) {
       <li>Languags: ${languages[0].name}</li>
     </ul>`;
 }
+
+export function createListMurkup(name, flags) {
+  return `<li><h2><img src="${flags}" alt="${flags}" width="25">${name}</h2></li>`;
+}
