@@ -14,6 +14,7 @@ inputRef.addEventListener('input', inputHandler);
 function inputHandler(e) {
   let country = e.target.value.trim().toLowerCase();
   if (!country) {
+    return;
   }
 
   fetchCountries(country)
